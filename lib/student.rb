@@ -5,6 +5,8 @@ class Student
   attr_accessor :name, :grade
   attr_reader :id
   
+  @@all = []
+  
   def initialize(name, grade, id=nil)
     @name = name
     @grade = grade
@@ -22,6 +24,9 @@ class Student
       DB[:conn].execute(sql)
   end
   
+  def self.all
+    @@all
+  end
   
   def self.drop_table
     sql = <<-SQL
